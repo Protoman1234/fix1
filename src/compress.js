@@ -17,7 +17,7 @@ function compress(req, res, input) {
     })
     .toBuffer((err, output, info) => {
       if (err || !info || res.headersSent) {
-        throw new Error(null);
+        return redirect(req, res);
       }
 
       res.setHeader('content-type', `image/${format}`);
