@@ -28,7 +28,8 @@ const params = require('./src/params')
 
 const PORT = process.env.PORT || 8080
 
-
+app.disable("x-powered-by");
+app.enable("trust proxy");
 app.get('/', authenticate, params)
 app.get('/favicon.ico', (req, res) => res.status(204).end())
 app.listen(PORT, () => console.log(`Worker ${process.pid}: Listening on ${PORT}`))
